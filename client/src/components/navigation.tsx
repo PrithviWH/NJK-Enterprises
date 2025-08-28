@@ -8,34 +8,58 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'why-us', 'services', 'categories', 'contact'];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (currentSection) {
-        setActiveSection(currentSection);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          
+          // Update active section based on scroll position with debouncing
+          const sections = ['home', 'about', 'why-us', 'services', 'categories', 'contact'];
+          let newActiveSection = activeSection;
+          
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              // More generous threshold to prevent flickering
+              if (rect.top <= 150 && rect.bottom >= 150) {
+                newActiveSection = section;
+                break;
+              }
+            }
+          }
+          
+          if (newActiveSection !== activeSection) {
+            setActiveSection(newActiveSection);
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMenuOpen(false);
+      // Immediately set active state to prevent flickering
       setActiveSection(sectionId);
+      setIsMenuOpen(false);
+      
+      // Use a small delay to ensure smooth transition
+      setTimeout(() => {
+        element.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+      }, 50);
     }
   };
 
@@ -95,9 +119,9 @@ export default function Navigation() {
                     type="button"
                   >
                     {/* Active background with smooth animation */}
-                    {activeSection === item.id && (
-                      <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary animate-gradient-x rounded-full pointer-events-none"></span>
-                    )}
+                    <span className={`absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary animate-gradient-x rounded-full pointer-events-none transition-opacity duration-500 ${
+                      activeSection === item.id ? 'opacity-100' : 'opacity-0'
+                    }`}></span>
                     
                     {/* Hover effect */}
                     <span className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></span>
@@ -106,9 +130,9 @@ export default function Navigation() {
                     <span className="relative z-20 font-semibold tracking-wide pointer-events-none">{item.label}</span>
                     
                     {/* Active indicator dot */}
-                    {activeSection === item.id && (
-                      <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-bounce pointer-events-none"></span>
-                    )}
+                    <span className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rounded-full pointer-events-none transition-all duration-300 ${
+                      activeSection === item.id ? 'opacity-100 animate-bounce' : 'opacity-0'
+                    }`}></span>
                   </button>
                 ))}
               </div>
