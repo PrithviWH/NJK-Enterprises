@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
@@ -14,12 +14,19 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-card/80 backdrop-blur-md border-b border-border sticky top-0 z-50">
+    <nav className="glass-effect border-b border-border/20 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <h1 className="text-xl font-bold text-primary" data-testid="logo">NJK ENTERPRISES</h1>
-            <span className="ml-2 text-sm text-muted-foreground hidden sm:inline">"Count on us"</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
+                <Users className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold gradient-text" data-testid="logo">NJK ENTERPRISES</h1>
+                <span className="text-xs text-muted-foreground hidden sm:inline">"Count on us"</span>
+              </div>
+            </div>
           </div>
           
           {/* Desktop Navigation */}
@@ -38,6 +45,13 @@ export default function Navigation() {
                 data-testid="nav-about"
               >
                 About
+              </button>
+              <button 
+                onClick={() => scrollToSection('why-us')} 
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium"
+                data-testid="nav-why-us"
+              >
+                Why Us
               </button>
               <button 
                 onClick={() => scrollToSection('services')} 
@@ -92,6 +106,13 @@ export default function Navigation() {
                 data-testid="mobile-nav-about"
               >
                 About
+              </button>
+              <button 
+                onClick={() => scrollToSection('why-us')} 
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
+                data-testid="mobile-nav-why-us"
+              >
+                Why Us
               </button>
               <button 
                 onClick={() => scrollToSection('services')} 

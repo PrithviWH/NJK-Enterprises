@@ -118,26 +118,48 @@ export default function ContactSection() {
                     <div>
                       <h4 className="text-lg font-semibold text-foreground mb-2">Phone</h4>
                       <p className="text-muted-foreground" data-testid="contact-phone">
-                        +91 XXX XXX XXXX
+                        Contact us for phone details
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-border">
-                  <h4 className="text-lg font-semibold text-foreground mb-4">Business Hours</h4>
-                  <div className="space-y-2 text-muted-foreground">
-                    <div className="flex justify-between" data-testid="hours-weekday">
-                      <span>Monday - Friday</span>
-                      <span>9:00 AM - 6:00 PM</span>
+                  <h4 className="text-lg font-semibold text-foreground mb-4">Our Specialization</h4>
+                  <div className="space-y-3 text-muted-foreground">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-sm">National & International Recruitment</span>
                     </div>
-                    <div className="flex justify-between" data-testid="hours-saturday">
-                      <span>Saturday</span>
-                      <span>9:00 AM - 2:00 PM</span>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span className="text-sm">Skilled, Semi-skilled & Unskilled Workers</span>
                     </div>
-                    <div className="flex justify-between" data-testid="hours-sunday">
-                      <span>Sunday</span>
-                      <span>Closed</span>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-sm">Multiple Industry Coverage</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span className="text-sm">Complete Payroll Management</span>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 pt-6 border-t border-border">
+                    <h4 className="text-lg font-semibold text-foreground mb-4">Business Hours</h4>
+                    <div className="space-y-2 text-muted-foreground">
+                      <div className="flex justify-between" data-testid="hours-weekday">
+                        <span>Monday - Friday</span>
+                        <span>9:00 AM - 6:00 PM</span>
+                      </div>
+                      <div className="flex justify-between" data-testid="hours-saturday">
+                        <span>Saturday</span>
+                        <span>9:00 AM - 2:00 PM</span>
+                      </div>
+                      <div className="flex justify-between" data-testid="hours-sunday">
+                        <span>Sunday</span>
+                        <span>Closed</span>
+                      </div>
                     </div>
                   </div>
                 </div>

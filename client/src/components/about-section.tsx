@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Award, Target, Users, Globe } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -24,24 +25,35 @@ export default function AboutSection() {
           </div>
           
           <div className="animate-fade-in">
-            <h3 className="text-2xl font-semibold mb-6 text-foreground" data-testid="company-profile-title">
+            <h3 className="text-2xl font-semibold mb-6 text-foreground dark:text-white" data-testid="company-profile-title">
               Our Company Profile
             </h3>
             <div className="space-y-6">
-              <p className="text-muted-foreground leading-relaxed" data-testid="company-description-1">
-                As a placement agency, we provide national job opportunities for skilled, semi-skilled and unskilled workers with various corporate giants in India. We cater to the needs of diverse industries including office staff, construction, hospitality, engineering, medical services, oil & gas shipping and more.
+              <p className="text-muted-foreground leading-relaxed text-lg" data-testid="company-description-1">
+                <strong className="text-foreground dark:text-white">NJK ENTERPRISES</strong> has redefined the process of national recruitment to a predictably accurate process with defined parameters for matching job skills of potential candidates with job profiles of national & international companies.
               </p>
               <p className="text-muted-foreground leading-relaxed" data-testid="company-description-2">
-                Our well-defined recruitment process ensures we match the right candidates with the right opportunities, backed by comprehensive testing, medical checks, and orientation programs.
+                As a placement agency, we provide national jobs for skilled, semi-skilled and unskilled workers with various corporate giants in India. We cater to diverse industries like Office Staff, Office Assistant, House Keeping Staff, Unarmed Security staff, Construction Labour, Hospitality Staff, Engineering Staff & Labour, Medical services Staff, Oil & Gas shipping and more.
               </p>
               
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                <div className="flex items-center space-x-3 p-4 bg-primary/5 rounded-lg">
+                  <Globe className="w-6 h-6 text-primary" />
+                  <span className="text-sm font-medium text-foreground dark:text-white">National & International</span>
+                </div>
+                <div className="flex items-center space-x-3 p-4 bg-accent/5 rounded-lg">
+                  <Award className="w-6 h-6 text-accent" />
+                  <span className="text-sm font-medium text-foreground dark:text-white">Quality Assured</span>
+                </div>
+              </div>
+              
               <div className="grid grid-cols-2 gap-6 mt-8">
-                <Card className="text-center p-6 border border-border">
-                  <div className="text-3xl font-bold text-primary mb-2" data-testid="stat-years">10+</div>
+                <Card className="text-center p-6 glass-effect border-0 hover:scale-105 transition-transform duration-300">
+                  <div className="text-3xl font-bold gradient-text mb-2" data-testid="stat-years">10+</div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>
                 </Card>
-                <Card className="text-center p-6 border border-border">
-                  <div className="text-3xl font-bold text-accent mb-2" data-testid="stat-placements">5000+</div>
+                <Card className="text-center p-6 glass-effect border-0 hover:scale-105 transition-transform duration-300">
+                  <div className="text-3xl font-bold gradient-text mb-2" data-testid="stat-placements">5000+</div>
                   <div className="text-sm text-muted-foreground">Successful Placements</div>
                 </Card>
               </div>

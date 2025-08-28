@@ -1,24 +1,30 @@
+import { FileText, Users, Heart, Plane } from "lucide-react";
+
 export default function ProcessSection() {
   const processSteps = [
     {
       number: 1,
-      title: "Application Screening",
-      description: "We review applications and shortlist candidates based on job requirements and qualifications."
+      icon: FileText,
+      title: "Application & Screening",
+      description: "We pro-actively tap the market for excellent candidates. Applications received, shortlisting and calling selected candidates for tests and interviews."
     },
     {
       number: 2,
+      icon: Users,
       title: "Testing & Interviews",
-      description: "Comprehensive skill tests and interviews conducted by industry experts and HR specialists."
+      description: "Industry experts conduct in-depth interviews with each individual, obtaining detailed information on educational background, experience, job history, and career goals."
     },
     {
       number: 3,
+      icon: Heart,
       title: "Medical & Documentation",
-      description: "Medical check-ups at authorized centers and processing of all required documentation."
+      description: "Medical check-ups at authorized centers and processing of all required documents including employment contracts, power of attorney, and guarantee letters."
     },
     {
       number: 4,
-      title: "Deployment & Support",
-      description: "Visa processing, orientation programs, and ongoing support throughout the placement process."
+      icon: Plane,
+      title: "Deployment & Orientation",
+      description: "Visa processing with Embassy, ticketing, immigration processes, and basic orientation program informing about labour laws and work environment."
     }
   ];
 
@@ -35,19 +41,27 @@ export default function ProcessSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {processSteps.map((step, index) => (
-            <div key={index} className="text-center animate-slide-up" data-testid={`process-step-${index}`}>
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-white text-xl font-bold">
-                {step.number}
+          {processSteps.map((step, index) => {
+            const IconComponent = step.icon;
+            return (
+              <div key={index} className="text-center animate-slide-up group" data-testid={`process-step-${index}`}>
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center mx-auto text-white text-xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-8 h-8" />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-sm font-bold">
+                    {step.number}
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-foreground dark:text-white" data-testid={`process-step-title-${index}`}>
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed" data-testid={`process-step-description-${index}`}>
+                  {step.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-foreground" data-testid={`process-step-title-${index}`}>
-                {step.title}
-              </h3>
-              <p className="text-muted-foreground" data-testid={`process-step-description-${index}`}>
-                {step.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

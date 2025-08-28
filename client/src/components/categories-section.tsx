@@ -8,87 +8,88 @@ export default function CategoriesSection() {
       title: "Administration",
       items: [
         "Project Manager",
-        "Public Relations Manager", 
+        "Public Relation Manager",
         "Chartered Accountants",
+        "Accountant/Cashier",
         "Secretary/Executives",
+        "Clerk/Typist/Receptionist",
+        "Sales Personnel/Store Keeper",
         "Computer Operator"
       ]
     },
     {
       icon: Cog,
-      title: "Operations",
+      title: "Heavy Equipment & Drivers",
       items: [
-        "Heavy Equipment Operators",
-        "Crane Operators",
-        "Heavy Vehicle Drivers",
-        "Light Vehicle Drivers",
-        "Equipment Mechanics"
+        "Operators - Dozer, Fork lift, Roller, Payloader, Back Hoe",
+        "Operators - Crane (Mobile/Crawler/Hydraulic)",
+        "Heavy Drivers - (Trailor/Dump/Truck)",
+        "Light Drivers - (Bus/Van/Car/Light Vehicles)",
+        "Mechanics - (Heavy/Light Equipment's Under Chassis)",
+        "Tyreman",
+        "Dinters",
+        "Painters",
+        "Moulders",
+        "Helpers"
       ]
     },
     {
       icon: Shield,
       title: "Security",
       items: [
-        "Unarmed Security Guards",
-        "Residential Security",
-        "Office/Bank Security",
-        "Industrial Security",
-        "Private Security"
+        "Unarmed Security Guard",
+        "Residential / Private Security",
+        "Official / Bank Security",
+        "Industrial Security"
       ]
     },
     {
       icon: Zap,
-      title: "Technical",
+      title: "Electrical",
       items: [
-        "General Electricians",
-        "Line Maintenance",
-        "AC & Refrigeration",
-        "Motor Welding",
-        "Industrial Electrical"
-      ]
-    },
-    {
-      icon: Wrench,
-      title: "Skilled Trades",
-      items: [
-        "Painters",
-        "Moulders",
-        "Helpers",
-        "Dinters",
-        "Tyreman"
+        "General Electrician (House Wiring)",
+        "Electrical Line Maintenance (Industrial)",
+        "AC & Refrigeration Motor Welding"
       ]
     },
     {
       icon: Home,
-      title: "Hospitality",
+      title: "General Staff",
       items: [
         "House Keeping Staff",
-        "Hotel Staff",
-        "Catering Services",
-        "Front Office Staff",
-        "Maintenance Staff"
+        "Office Staff",
+        "Office Assistant",
+        "Construction Labour",
+        "Hospitality Staff"
       ]
     },
     {
       icon: Heart,
-      title: "Healthcare",
+      title: "Medical Services",
       items: [
         "Medical Services Staff",
-        "Healthcare Assistants",
-        "Hospital Support Staff",
-        "Medical Technicians",
-        "Care Workers"
+        "Healthcare Professionals",
+        "Medical Support Staff"
       ]
     },
     {
       icon: HardHat,
-      title: "Engineering",
+      title: "Engineering & Labour",
       items: [
-        "Engineering Staff",
-        "Technical Labour",
-        "Construction Workers",
-        "Project Engineers",
-        "Site Supervisors"
+        "Engineering Staff & Labour",
+        "Technical Specialists",
+        "Construction Engineers",
+        "Project Supervisors"
+      ]
+    },
+    {
+      icon: Building,
+      title: "Oil & Gas Shipping",
+      items: [
+        "Maritime Personnel",
+        "Offshore Workers",
+        "Shipping Crew",
+        "Technical Support"
       ]
     }
   ];

@@ -1,39 +1,45 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, FileText, DollarSign } from "lucide-react";
+import { Users, FileText, DollarSign, CheckCircle, Clock, TrendingUp } from "lucide-react";
 
 export default function ServicesSection() {
   const services = [
     {
       icon: Users,
       title: "Recruitment Process",
-      description: "Comprehensive screening, testing, and selection process with medical checks and orientation programs for international placements.",
+      description: "Comprehensive international recruitment with defined parameters for matching job skills of potential candidates with job profiles of national & international companies.",
       features: [
-        "Application screening",
-        "Skills testing & interviews", 
-        "Medical examinations",
-        "Visa processing"
+        "Demand letter processing",
+        "Application screening & shortlisting",
+        "Skills testing & oral interviews",
+        "Medical check-ups at authorized centres",
+        "Visa processing with Embassy",
+        "Basic orientation program"
       ]
     },
     {
       icon: FileText,
-      title: "Staffing Solutions",
-      description: "Short-term and long-term contract staffing services with flexible evaluation periods to ensure perfect candidate-position matching.",
+      title: "Staffing Solutions / Payroll Management",
+      description: "Complete outsourcing solutions providing competitive edge by enabling better management of human capital and financial resources.",
       features: [
-        "Contract staffing",
-        "Temporary placements",
-        "Permanent hiring",
-        "Evaluation periods"
+        "Short Term / Long Term contract staffing",
+        "Predetermined evaluation periods",
+        "Complete payroll processing",
+        "Statutory and non-statutory compliances",
+        "Monthly salary crediting",
+        "Email & courier reports"
       ]
     },
     {
-      icon: DollarSign,
-      title: "Payroll Management",
-      description: "Complete payroll management services with statutory compliances, benefits administration, and full HR department functionality.",
+      icon: CheckCircle,
+      title: "Document Processing",
+      description: "Complete documentation and legal processing services for international placements with embassy coordination and compliance management.",
       features: [
-        "Salary processing",
-        "Statutory compliance",
-        "Benefits administration",
-        "Monthly reporting"
+        "Power of Attorney",
+        "Service Agreement",
+        "Employment Contract",
+        "Guarantee Letter",
+        "Government formalities",
+        "Embassy coordination"
       ]
     }
   ];
@@ -50,7 +56,7 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (

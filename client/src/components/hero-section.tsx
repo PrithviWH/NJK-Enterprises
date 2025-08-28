@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, Users, Shield, Award, Globe } from "lucide-react";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -11,30 +11,33 @@ export default function HeroSection() {
   };
 
   const features = [
-    "90-day guarantee on all placements",
-    "Comprehensive medical checks & aptitude tests",
-    "Full computerized system & virtual databank",
-    "National & international recruitment expertise"
+    { icon: Shield, text: "90-day guarantee on all placements" },
+    { icon: Users, text: "Comprehensive medical checks & aptitude tests" },
+    { icon: Globe, text: "Fully computerized office system & virtual databank" },
+    { icon: Award, text: "National & international recruitment expertise" }
   ];
 
   return (
-    <section id="home" className="relative bg-gradient-to-br from-primary/5 to-accent/5 min-h-screen flex items-center">
-      <div className="absolute inset-0 bg-gradient-to-r from-white/80 to-white/60 z-10"></div>
-      <div 
-        className="absolute inset-0 bg-cover bg-center z-0" 
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')`
-        }}
-      ></div>
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
+        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-200/20 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{animationDelay: '4s'}}></div>
+      </div>
       
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight" data-testid="hero-title">
-              Professional <span className="text-primary">Recruitment</span> & Staffing Solutions
+            <div className="mb-4">
+              <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-6 animate-scale-in">"Count on us" - Your Trusted Partner</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
+              Professional <span className="gradient-text">Recruitment</span> &<br />
+              <span className="text-foreground dark:text-white">Staffing Solutions</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl" data-testid="hero-description">
-              We are an assembly of hardworking, experienced, dynamic and dedicated professionals working to provide quality and superior business solutions.
+              We are an assembly of hardworking, experienced, dynamic and dedicated professionals working to provide quality and superior business solutions. We strongly stand to mediate between job creators and job seekers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
@@ -58,20 +61,23 @@ export default function HeroSection() {
           </div>
           
           <div className="animate-slide-up">
-            <Card className="shadow-xl border border-border">
+            <Card className="glass-effect shadow-2xl border-0">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold mb-6 text-foreground" data-testid="hero-card-title">
+                <h3 className="text-2xl font-semibold mb-6 text-foreground dark:text-white" data-testid="hero-card-title">
                   Why Choose NJK Enterprises?
                 </h3>
-                <div className="space-y-4">
-                  {features.map((feature, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-6 h-6 bg-accent rounded-full flex items-center justify-center mt-0.5">
-                        <Check className="w-3 h-3 text-white" />
+                <div className="space-y-6">
+                  {features.map((feature, index) => {
+                    const IconComponent = feature.icon;
+                    return (
+                      <div key={index} className="flex items-start space-x-4 group">
+                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                          <IconComponent className="w-5 h-5 text-white" />
+                        </div>
+                        <p className="text-muted-foreground leading-relaxed pt-2" data-testid={`feature-${index}`}>{feature.text}</p>
                       </div>
-                      <p className="text-muted-foreground" data-testid={`feature-${index}`}>{feature}</p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>

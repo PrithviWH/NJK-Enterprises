@@ -2,6 +2,7 @@ import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
 import MissionSection from "@/components/mission-section";
+import WhyUsSection from "@/components/why-us-section";
 import ServicesSection from "@/components/services-section";
 import CategoriesSection from "@/components/categories-section";
 import ProcessSection from "@/components/process-section";
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <MissionSection />
+      <WhyUsSection />
       <ServicesSection />
       <CategoriesSection />
       <ProcessSection />
