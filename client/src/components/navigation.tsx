@@ -40,10 +40,10 @@ export default function Navigation() {
   };
 
   const getNavItemClass = (sectionId: string) => {
-    const baseClass = "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group";
+    const baseClass = "relative px-6 py-3 text-sm font-medium rounded-full transition-all duration-500 ease-in-out overflow-hidden group cursor-pointer";
     const activeClass = activeSection === sectionId 
-      ? "text-white bg-gradient-to-r from-primary to-accent shadow-lg scale-105" 
-      : "text-muted-foreground hover:text-primary hover:bg-primary/10";
+      ? "text-white shadow-lg transform scale-105" 
+      : "text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 hover:scale-105";
     return `${baseClass} ${activeClass}`;
   };
 
@@ -85,57 +85,63 @@ export default function Navigation() {
                 ].map((item) => (
                   <button 
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)} 
-                    className={`relative px-6 py-3 text-sm font-medium rounded-full transition-all duration-500 ease-in-out overflow-hidden group ${
-                      activeSection === item.id 
-                        ? 'text-white shadow-lg transform scale-105' 
-                        : 'text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 hover:scale-105'
-                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      scrollToSection(item.id);
+                    }} 
+                    className={getNavItemClass(item.id)}
                     data-testid={`nav-${item.id}`}
+                    type="button"
                   >
                     {/* Active background with smooth animation */}
                     {activeSection === item.id && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary animate-gradient-x rounded-full"></div>
+                      <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary animate-gradient-x rounded-full pointer-events-none"></span>
                     )}
                     
                     {/* Hover effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <span className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></span>
                     
                     {/* Text */}
-                    <span className="relative z-10 font-semibold tracking-wide">{item.label}</span>
+                    <span className="relative z-20 font-semibold tracking-wide pointer-events-none">{item.label}</span>
                     
                     {/* Active indicator dot */}
                     {activeSection === item.id && (
-                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-bounce"></div>
+                      <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-bounce pointer-events-none"></span>
                     )}
                   </button>
                 ))}
               </div>
               
               {/* Floating background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500 pointer-events-none"></div>
             </div>
           </div>
           
           {/* CTA Button */}
           <div className="hidden lg:block">
             <div className="relative group">
-              <Button
-                onClick={() => scrollToSection('contact')}
-                className="relative bg-gradient-to-r from-primary via-accent to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 text-white px-8 py-3 rounded-full shadow-2xl hover:shadow-primary/25 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 font-semibold tracking-wide overflow-hidden"
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollToSection('contact');
+                }}
+                className="relative bg-gradient-to-r from-primary via-accent to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 text-white px-8 py-3 rounded-full shadow-2xl hover:shadow-primary/25 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 font-semibold tracking-wide overflow-hidden group cursor-pointer"
                 data-testid="nav-cta-contact"
+                type="button"
               >
-                <span className="relative z-10">Get In Touch</span>
+                <span className="relative z-20 pointer-events-none">Get In Touch</span>
                 
                 {/* Animated background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
                 
                 {/* Shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              </Button>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></span>
+              </button>
               
               {/* Button glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full opacity-20 group-hover:opacity-40 blur-lg transition-opacity duration-300 scale-150"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full opacity-20 group-hover:opacity-40 blur-lg transition-opacity duration-300 scale-150 pointer-events-none"></div>
             </div>
           </div>
 
@@ -155,7 +161,7 @@ export default function Navigation() {
               </div>
               
               {/* Button background animation */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </button>
           </div>
         </div>
