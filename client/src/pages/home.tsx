@@ -5,7 +5,6 @@ import MissionSection from "@/components/mission-section";
 import WhyUsSection from "@/components/why-us-section";
 import ServicesSection from "@/components/services-section";
 import CategoriesSection from "@/components/categories-section";
-import ProcessSection from "@/components/process-section";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 
@@ -19,7 +18,6 @@ export default function Home() {
       <WhyUsSection />
       <ServicesSection />
       <CategoriesSection />
-      <ProcessSection />
       <ContactSection />
       <Footer />
     </div>
